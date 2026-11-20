@@ -9,15 +9,18 @@ import { AppError } from "../errors/AppError.js";
 // });
 let pool = null;
 //create an instance of pool connection
+export function createPool(dbConn) {
+    if (!dbConn) {
+        throw new AppError(404, "DATABASE_URL was not set");
+    }
+    return new Pool({ connectionString: dbConn });
+}
 export function getPool(dbConn) {
     if (!pool) {
-        const connectionString = dbConn;
-        if (!connectionString) {
-            throw new AppError(404, "DATABASE_URL was not set");
-        }
-        pool = new Pool({ connectionString });
+        // if no existing pool, create one and return
+        pool = createPool(dbConn);
     }
-    return pool;
+    return;
 }
 //close connection
 export async function closePool() {
