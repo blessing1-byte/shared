@@ -1,4 +1,5 @@
 //barrel file
+import { runMigration } from "@blessing1-byte/shared";
 // npm i pino pino-http pg zod
 
 //logger
@@ -44,3 +45,6 @@ export { runConsumer } from "./kafka/consumer.js";
 
 //events
 export type { Events } from "./events_outbox/types/event_type.js";
+
+//runMigration
+export { runMigration } from "./db/migrations/migrationRunner.js";

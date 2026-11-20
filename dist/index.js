@@ -1,4 +1,3 @@
-//barrel file
 // npm i pino pino-http pg zod
 //logger
 export { logger } from "./logger/logger.js";
@@ -26,4 +25,6 @@ export { publishJson, publishJsonSafe } from "./kafka/producers.js";
 //background kafka polling workers
 export { pollOutbox } from "./workers/eventOutbox.workers.js";
 export { runConsumer } from "./kafka/consumer.js";
+//runMigration
+export { runMigration } from "./db/migrations/migrationRunner.js";
 //# sourceMappingURL=index.js.map
