@@ -18,8 +18,8 @@ export async function createProducer(clientId: string): Promise<Producer> {
 
 export async function publishJson(
   producer: Producer,
-  headers: IHeaders = {},
   topic: string,
+  headers: IHeaders = {},
   payload: Record<string, any>,
   key?: string,
 ): Promise<RecordMetadata[]> {
@@ -41,9 +41,9 @@ export async function publishJson(
 
 export async function publishJsonSafe(
   producer: Producer | null,
-  payload: Record<string, any>,
   topic: string,
   headers: IHeaders = {},
+  payload: Record<string, any>,
   key?: string,
 ): Promise<void> {
   if (!producer) {
@@ -52,7 +52,7 @@ export async function publishJsonSafe(
   }
 
   try {
-    await publishJson(producer, headers, topic, payload, key);
+    await publishJson(producer, topic, headers, payload, key);
   } catch (error) {
     logger.error({ error, topic, payload }, " failed to publish event safely");
   }

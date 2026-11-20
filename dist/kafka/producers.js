@@ -9,7 +9,7 @@ export async function createProducer(clientId) {
     logger.info({ clientId }, "KAFKA PRODUCER SUCCESSFUL");
     return producer;
 }
-export async function publishJson(producer, headers = {}, topic, payload, key) {
+export async function publishJson(producer, topic, headers = {}, payload, key) {
     const result = await producer.send({
         topic,
         messages: [
@@ -24,13 +24,13 @@ export async function publishJson(producer, headers = {}, topic, payload, key) {
     console.log(result);
     return result;
 }
-export async function publishJsonSafe(producer, payload, topic, headers = {}, key) {
+export async function publishJsonSafe(producer, topic, headers = {}, payload, key) {
     if (!producer) {
         logger.warn("producer is not ready");
         return;
     }
     try {
-        await publishJson(producer, headers, topic, payload, key);
+        await publishJson(producer, topic, headers, payload, key);
     }
     catch (error) {
         logger.error({ error, topic, payload }, " failed to publish event safely");
