@@ -48,3 +48,6 @@ export type { Events } from "./events_outbox/types/event_type.js";
 
 //runMigration
 export { runMigration } from "./db/migrations/migrationRunner.js";
+
+//create connection
+export { createPool } from "./db/pool.js";

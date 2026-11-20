@@ -19,12 +19,12 @@ export function createPool(dbConn: string): Pool {
   return new Pool({ connectionString: dbConn });
 }
 
-export function getPool(dbConn: string) {
+export function getPool(dbConn: string): Pool {
   if (!pool) {
     // if no existing pool, create one and return
     pool = createPool(dbConn);
   }
-  return;
+  return pool;
 }
 //close connection
 export async function closePool() {

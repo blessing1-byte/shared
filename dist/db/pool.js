@@ -20,7 +20,7 @@ export function getPool(dbConn) {
         // if no existing pool, create one and return
         pool = createPool(dbConn);
     }
-    return;
+    return pool;
 }
 //close connection
 export async function closePool() {

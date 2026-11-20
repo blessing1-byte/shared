@@ -27,4 +27,6 @@ export { pollOutbox } from "./workers/eventOutbox.workers.js";
 export { runConsumer } from "./kafka/consumer.js";
 //runMigration
 export { runMigration } from "./db/migrations/migrationRunner.js";
+//create connection
+export { createPool } from "./db/pool.js";
 //# sourceMappingURL=index.js.map

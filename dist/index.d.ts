@@ -17,3 +17,4 @@ export { pollOutbox } from "./workers/eventOutbox.workers.js";
 export { runConsumer } from "./kafka/consumer.js";
 export type { Events } from "./events_outbox/types/event_type.js";
 export { runMigration } from "./db/migrations/migrationRunner.js";
+export { createPool } from "./db/pool.js";
