@@ -1,19 +1,19 @@
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 // import { resolve } from "node:path";
 // import { cwd } from "node:process";
 import { Pool } from "pg";
 import { AppError } from "../errors/AppError.js";
-import { resolve } from "node:path";
-dotenv.config({
-  path: resolve(__dirname, "../../../../.env"),
-});
+// import { resolve } from "node:path";
+// dotenv.config({
+//   path: resolve(__dirname, "../../../../.env"),
+// });
 
 let pool: Pool | null = null;
 
 //create an instance of pool connection
-export function getPool(): Pool {
+export function getPool(dbConn: string): Pool {
   if (!pool) {
-    const connectionString = process.env.DATABASE_URL;
+    const connectionString = dbConn;
     if (!connectionString) {
       throw new AppError(404, "DATABASE_URL was not set");
     }
